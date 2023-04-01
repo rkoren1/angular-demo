@@ -1,7 +1,25 @@
 <div class="main-content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6"></div>
-    </div>
-  </div>
+  <dx-tree-list [dataSource]="treelistDatasource">
+    <dxi-column dataField="firstName"
+      ><dxi-validation-rule type="required"></dxi-validation-rule
+    ></dxi-column>
+    <dxi-column dataField="lastName"
+      ><dxi-validation-rule type="required"></dxi-validation-rule
+    ></dxi-column>
+    <dxi-column dataField="phone"
+      ><dxi-validation-rule type="required"></dxi-validation-rule
+    ></dxi-column>
+    <dxi-column dataField="university"></dxi-column>
+    <dxi-column dataField="email"
+      ><dxi-validation-rule type="required"></dxi-validation-rule
+    ></dxi-column>
+    <dxo-editing
+      mode="cell"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+      [useIcons]="true"
+    >
+    </dxo-editing>
+  </dx-tree-list>
 </div>
