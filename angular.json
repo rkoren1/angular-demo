@@ -34,6 +34,8 @@
               "node_modules/chartist/dist/chartist.js"
             ],
             "allowedCommonJsDependencies": [
+              "devextreme",
+              "devextreme-angular",
               "rxjs/add/operator/filter",
               "jquery",
               "chartist"

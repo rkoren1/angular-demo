@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoadOptions } from "devextreme/data";
 import CustomStore from "devextreme/data/custom_store";
 import DataSource from "devextreme/data/data_source";
@@ -13,7 +14,7 @@ import { UsersService } from "./users.service";
 export class UsersComponent implements OnInit {
   customStore;
   treelistDatasource;
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
   ngOnInit() {
     this.initTreelistCustomStore();
   }
@@ -41,5 +42,8 @@ export class UsersComponent implements OnInit {
       store: this.customStore,
       key: "id", // set up primary key,
     });
+  }
+  redirectToUserProfile(e) {
+    this.router.navigate(["/user-profile/", e.data.id]);
   }
 }

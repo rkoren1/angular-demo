@@ -1,8 +1,21 @@
 <div class="main-content">
-  <dx-tree-list [dataSource]="treelistDatasource">
-    <dxi-column dataField="firstName"
+  <dx-tree-list
+    [dataSource]="treelistDatasource"
+    (onRowClick)="redirectToUserProfile($event)"
+  >
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxi-column dataField="firstName" cellTemplate="userTemplate"
       ><dxi-validation-rule type="required"></dxi-validation-rule
     ></dxi-column>
+    <div *dxTemplate="let options of 'userTemplate'">
+      <div>
+        <img [src]="options.data.image" height="30px" width="30px" />
+        {{ options.data.firstName }}
+      </div>
+      <span *ngIf="options.data.Task_Assigned_Employee" class="name">{{
+        options.data.Task_Assigned_Employee.Name
+      }}</span>
+    </div>
     <dxi-column dataField="lastName"
       ><dxi-validation-rule type="required"></dxi-validation-rule
     ></dxi-column>
@@ -14,7 +27,7 @@
       ><dxi-validation-rule type="required"></dxi-validation-rule
     ></dxi-column>
     <dxo-editing
-      mode="cell"
+      mode="row"
       [allowUpdating]="true"
       [allowAdding]="true"
       [allowDeleting]="true"
