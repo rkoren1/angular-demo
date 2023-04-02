@@ -17,14 +17,35 @@
                   <th>Discount</th>
                   <th>Stock</th>
                   <th>Brand</th>
+                  <th>Actions</th>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let product of products">
                   <tr>
-                    <td>1</td>
-                    <td>Dakota Rice</td>
-                    <td>Niger</td>
-                    <td>Oud-Turnhout</td>
-                    <td class="text-primary">$36,738</td>
+                    <td>{{ product?.title }}</td>
+                    <td>{{ product?.description }}</td>
+                    <td>{{ product?.price }}€</td>
+                    <td>
+                      {{
+                        (
+                          (product?.discountPercentage * product.price) /
+                          100
+                        ).toFixed(2)
+                      }}€
+                    </td>
+                    <td class="text-primary">{{ product?.stock }}</td>
+                    <td>{{ product?.brand }}</td>
+                    <td>
+                      <div class="action-wrapper">
+                        <div
+                          class="dx-link dx-icon-edit action-icon"
+                          (click)="editProduct(product?.productId)"
+                        ></div>
+                        <div
+                          class="dx-link dx-icon-trash action-icon"
+                          (click)="deleteProduct(product?.productId)"
+                        ></div>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
