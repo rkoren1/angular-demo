@@ -1,24 +1,24 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { BrowserModule } from "@angular/platform-browser";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "users",
-    pathMatch: "full",
+    path: '',
+    redirectTo: 'users',
+    pathMatch: 'full',
   },
   {
-    path: "",
+    path: '',
     component: AdminLayoutComponent,
     children: [
       {
-        path: "",
+        path: '',
         loadChildren: () =>
-          import("./layouts/admin-layout/admin-layout.module").then(
+          import('./layouts/admin-layout/admin-layout.module').then(
             (m) => m.AdminLayoutModule
           ),
       },

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -8,25 +8,25 @@ declare interface RouteInfo {
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: "/users", title: "Users", icon: "dashboard", class: "" },
+  { path: '/users', title: 'Users', icon: 'dashboard', class: '' },
   {
-    path: "/carts",
-    title: "Carts",
-    icon: "content_paste",
-    class: "",
+    path: '/carts',
+    title: 'Carts',
+    icon: 'content_paste',
+    class: '',
   },
   {
-    path: "/products",
-    title: "Products",
-    icon: "library_books",
-    class: "",
+    path: '/products',
+    title: 'Products',
+    icon: 'library_books',
+    class: '',
   },
 ];
 
 @Component({
-  selector: "app-sidebar",
-  templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.scss"],
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];

@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-carts",
-  templateUrl: "./carts.component.html",
-  styleUrls: ["./carts.component.scss"],
+  selector: 'app-carts',
+  templateUrl: './carts.component.html',
+  styleUrls: ['./carts.component.scss'],
 })
 export class CartsComponent implements OnInit {
   constructor() {}

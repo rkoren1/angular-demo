@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { LoadOptions } from "devextreme/data";
-import CustomStore from "devextreme/data/custom_store";
-import DataSource from "devextreme/data/data_source";
-import { lastValueFrom, of } from "rxjs";
-import { UsersService } from "./users.service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoadOptions } from 'devextreme/data';
+import CustomStore from 'devextreme/data/custom_store';
+import DataSource from 'devextreme/data/data_source';
+import { lastValueFrom, of } from 'rxjs';
+import { UsersService } from './users.service';
 
 @Component({
-  selector: "app-users",
-  templateUrl: "./users.component.html",
-  styleUrls: ["./users.component.scss"],
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
   customStore;
@@ -21,7 +21,7 @@ export class UsersComponent implements OnInit {
 
   initTreelistCustomStore() {
     this.customStore = new CustomStore({
-      key: "id",
+      key: 'id',
       load: (loadOptions: LoadOptions) => {
         const loadData$ = this.usersService.getUsers();
         return lastValueFrom(loadData$).then((data) => ({
@@ -40,10 +40,10 @@ export class UsersComponent implements OnInit {
     });
     this.treelistDatasource = new DataSource({
       store: this.customStore,
-      key: "id", // set up primary key,
+      key: 'id', // set up primary key,
     });
   }
   redirectToUserProfile(e) {
-    this.router.navigate(["/user-profile/", e.data.id]);
+    this.router.navigate(['/user-profile/', e.data.id]);
   }
 }

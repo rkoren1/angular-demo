@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import PerfectScrollbar from 'perfect-scrollbar';
-import * as $ from "jquery";
+import * as $ from 'jquery';
 import { filter, Subscription } from 'rxjs';
 
 @Component({
@@ -30,19 +30,19 @@ export class AdminLayoutComponent implements OnInit {
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
       const elemSidebar = <HTMLElement>document.querySelector('.sidebar .sidebar-wrapper');
 
-      this.location.subscribe((ev:PopStateEvent) => {
+      this.location.subscribe((ev: PopStateEvent) => {
           this.lastPoppedUrl = ev.url;
       });
-       this.router.events.subscribe((event:any) => {
+       this.router.events.subscribe((event: any) => {
           if (event instanceof NavigationStart) {
              if (event.url != this.lastPoppedUrl)
-                 this.yScrollStack.push(window.scrollY);
+                 {this.yScrollStack.push(window.scrollY);}
          } else if (event instanceof NavigationEnd) {
              if (event.url == this.lastPoppedUrl) {
                  this.lastPoppedUrl = undefined;
                  window.scrollTo(0, this.yScrollStack.pop());
              } else
-                 window.scrollTo(0, 0);
+                 {window.scrollTo(0, 0);}
          }
       });
       this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
@@ -55,9 +55,9 @@ export class AdminLayoutComponent implements OnInit {
       }
 
       const window_width = $(window).width();
-      let $sidebar = $('.sidebar');
-      let $sidebar_responsive = $('body > .navbar-collapse');
-      let $sidebar_img_container = $sidebar.find('.sidebar-background');
+      const $sidebar = $('.sidebar');
+      const $sidebar_responsive = $('body > .navbar-collapse');
+      const $sidebar_img_container = $sidebar.find('.sidebar-background');
 
 
       if(window_width > 767){
@@ -80,13 +80,13 @@ export class AdminLayoutComponent implements OnInit {
       });
 
       $('.fixed-plugin .badge').click(function(){
-          let $full_page_background = $('.full-page-background');
+          const $full_page_background = $('.full-page-background');
 
 
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
 
-          var new_color = $(this).data('color');
+          const new_color = $(this).data('color');
 
           if($sidebar.length !== 0){
               $sidebar.attr('data-color', new_color);
@@ -98,13 +98,13 @@ export class AdminLayoutComponent implements OnInit {
       });
 
       $('.fixed-plugin .img-holder').click(function(){
-          let $full_page_background = $('.full-page-background');
+          const $full_page_background = $('.full-page-background');
 
           $(this).parent('li').siblings().removeClass('active');
           $(this).parent('li').addClass('active');
 
 
-          var new_image = $(this).find("img").attr('src');
+          const new_image = $(this).find('img').attr('src');
 
           if($sidebar_img_container.length !=0 ){
               $sidebar_img_container.fadeOut('fast', function(){
@@ -130,7 +130,7 @@ export class AdminLayoutComponent implements OnInit {
       this.runOnRouteChange();
   }
   isMaps(path){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
+      let titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
       if(path == titlee){
           return false;
