@@ -1,0 +1,41 @@
+<dx-popup
+  [visible]="true"
+  height="95%"
+  width="95%"
+  [title]="'Editing ' + productData.title"
+  (onHiding)="close()"
+>
+  <dx-form [(formData)]="productData">
+    <dxi-item dataField="title"></dxi-item>
+    <dxi-item dataField="description"></dxi-item>
+    <dxi-item dataField="price"></dxi-item>
+    <dxi-item dataField="discountPercentage"></dxi-item>
+    <dxi-item dataField="stock"></dxi-item>
+    <dxi-item dataField="brand"></dxi-item>
+  </dx-form>
+
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'Cancel',
+      onClick: cancel,
+      type: 'default',
+      disabled: false
+    }"
+  >
+  </dxi-toolbar-item>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'Confirm',
+      onClick: confirm,
+      type: 'default',
+      disabled: false
+    }"
+  >
+  </dxi-toolbar-item>
+</dx-popup>

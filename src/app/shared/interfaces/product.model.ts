@@ -1,3 +1,5 @@
+import { FormControl } from '@angular/forms';
+
 export interface GetProducts {
   products: Product[];
   total: number;
@@ -17,4 +19,12 @@ export interface Product {
   category: string;
   thumbnail: string;
   images: string[];
+}
+
+export interface EditProductForm {
+  title: FormControl<string>;
+  description: FormControl<string>;
+  price: FormControl<number>;
+  discountPercentage: FormControl<number>;
+  stock: FormControl<number>;
 }

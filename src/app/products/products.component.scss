@@ -1,8 +1,19 @@
 .action-icon {
   color: #337ab7;
   cursor: pointer;
+  font-size: 18px;
 }
 .action-wrapper {
   display: flex;
   justify-content: space-evenly;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-box {
+  height: 35px;
 }

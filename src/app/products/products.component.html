@@ -3,9 +3,19 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-danger">
-            <h4 class="card-title">Table of products</h4>
-            <p class="card-category">Add, Edit and delete products</p>
+          <div class="card-header card-header-danger table-header">
+            <div>
+              <h4 class="card-title">Table of products</h4>
+              <p class="card-category">Add, Edit and delete products</p>
+            </div>
+            <dx-text-box
+              #searchBox
+              id="text-input"
+              class="search-box"
+              placeholder="Search..."
+              valueChangeEvent="keyup"
+              (onValueChanged)="onChange$.next($event)"
+            ></dx-text-box>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -19,7 +29,7 @@
                   <th>Brand</th>
                   <th>Actions</th>
                 </thead>
-                <tbody *ngFor="let product of products">
+                <tbody *ngFor="let product of filteredProducts">
                   <tr>
                     <td>{{ product?.title }}</td>
                     <td>{{ product?.description }}</td>
@@ -38,11 +48,11 @@
                       <div class="action-wrapper">
                         <div
                           class="dx-link dx-icon-edit action-icon"
-                          (click)="editProduct(product?.productId)"
+                          (click)="editProduct(product?.id)"
                         ></div>
                         <div
                           class="dx-link dx-icon-trash action-icon"
-                          (click)="deleteProduct(product?.productId)"
+                          (click)="deleteProduct(product?.id, product?.title)"
                         ></div>
                       </div>
                     </td>
@@ -56,3 +66,10 @@
     </div>
   </div>
 </div>
+<app-edit-products-popup
+  *ngIf="showEditPopup"
+  (closed)="closeEditPopup()"
+  (canceled)="closeEditPopup()"
+  (confirmed)="confirmEditPopup()"
+  [productData]="editProductData"
+></app-edit-products-popup>

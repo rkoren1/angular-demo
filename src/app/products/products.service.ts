@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from 'app/shared/interfaces/cart.model';
-import { GetProducts } from 'app/shared/interfaces/product.model';
+import { GetProducts, Product } from 'app/shared/interfaces/product.model';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -21,7 +20,9 @@ export class ProductsService {
     );
   }
   deleteProduct(productId: number) {
-    return this.http.delete('https://dummyjson.com/products/' + productId);
+    return this.http.delete(
+      'https://dummyjson.com/products/' + productId.toString()
+    );
   }
   addProduct(productData: Product) {
     return this.http.post(
