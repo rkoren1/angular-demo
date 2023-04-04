@@ -31,7 +31,14 @@
                 </thead>
                 <tbody *ngFor="let product of filteredProducts">
                   <tr>
-                    <td>{{ product?.title }}</td>
+                    <td class="product-title-row">
+                      <img
+                        [src]="product.images[0]"
+                        class="product-image"
+                        (click)="enlargeImg(product.images[0])"
+                      />
+                      {{ product?.title }}
+                    </td>
                     <td>{{ product?.description }}</td>
                     <td>{{ product?.price }}€</td>
                     <td>
@@ -73,3 +80,11 @@
   (confirmed)="confirmEditPopup()"
   [productData]="editProductData"
 ></app-edit-products-popup>
+<div class="enlarged-image" *ngIf="isImgEnlarged">
+  <dx-button
+    icon="remove"
+    (onClick)="closeEnlargedImg()"
+    class="close-btn"
+  ></dx-button>
+  <img [src]="enlargeImgSrc" />
+</div>

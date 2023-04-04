@@ -18,6 +18,8 @@ export class ProductsComponent implements OnInit {
   searchBoxValue = '';
   filteredProducts: Product[];
   onChange$: Subject<any> = new Subject();
+  isImgEnlarged = false;
+  enlargeImgSrc: string;
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
@@ -39,13 +41,12 @@ export class ProductsComponent implements OnInit {
     result.then((dialogResult) => {
       if (dialogResult) {
         this.productsService.deleteProduct(productId).subscribe((res) => {
-          //should show toastr notification for when delete is successful or false
+          //should show toastr notification when delete is successful or false
         });
       }
     });
   }
   editProduct(productId: number) {
-    console.log(this.searchBoxValue);
     this.productsService.getProduct(productId).subscribe((productData) => {
       this.editProductData = productData;
       this.showEditPopup = true;
@@ -62,5 +63,12 @@ export class ProductsComponent implements OnInit {
   }
   confirmEditPopup() {
     this.showEditPopup = false;
+  }
+  enlargeImg(imgSrc: string) {
+    this.enlargeImgSrc = imgSrc;
+    this.isImgEnlarged = true;
+  }
+  closeEnlargedImg() {
+    this.isImgEnlarged = false;
   }
 }

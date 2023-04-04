@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { EditProductsPopupComponent } from 'app/products/edit-products-popup/edit-products-popup.component';
 import { UsersComponent } from 'app/users/users.component';
 import {
+  DxButtonModule,
   DxFormModule,
   DxPopupModule,
   DxTextBoxModule,
@@ -37,6 +38,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
     DxPopupModule,
     DxFormModule,
     DxTextBoxModule,
+    DxButtonModule,
   ],
   declarations: [
     UsersComponent,
