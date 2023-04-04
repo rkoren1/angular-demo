@@ -24,3 +24,13 @@ export interface GetCarts {
   skip: number;
   limit: number;
 }
+
+export interface GetSingleCart {
+  id: number;
+  products: Product[];
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
+}

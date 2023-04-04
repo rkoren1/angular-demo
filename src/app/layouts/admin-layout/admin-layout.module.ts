@@ -8,12 +8,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { CartProductsPopupComponent } from 'app/carts/cart-products-popup/cart-products-popup.component';
 import { EditProductsPopupComponent } from 'app/products/edit-products-popup/edit-products-popup.component';
 import { UsersComponent } from 'app/users/users.component';
 import {
   DxButtonModule,
   DxFormModule,
+  DxListModule,
   DxPopupModule,
+  DxTextAreaModule,
   DxTextBoxModule,
   DxTreeListModule,
 } from 'devextreme-angular';
@@ -39,6 +42,8 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
     DxFormModule,
     DxTextBoxModule,
     DxButtonModule,
+    DxTextAreaModule,
+    DxListModule,
   ],
   declarations: [
     UsersComponent,
@@ -46,6 +51,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
     CartsComponent,
     ProductsComponent,
     EditProductsPopupComponent,
+    CartProductsPopupComponent,
   ],
 })
 export class AdminLayoutModule {}

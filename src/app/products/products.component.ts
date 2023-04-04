@@ -15,7 +15,6 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   showEditPopup = false;
   editProductData: Product;
-  searchBoxValue = '';
   filteredProducts: Product[];
   onChange$: Subject<any> = new Subject();
   isImgEnlarged = false;
@@ -62,7 +61,12 @@ export class ProductsComponent implements OnInit {
     this.showEditPopup = false;
   }
   confirmEditPopup() {
-    this.showEditPopup = false;
+    this.productsService.getProducts().subscribe((productsData) => {
+      this.products = productsData;
+      this.filteredProducts = productsData;
+      this.searchBox.instance.reset();
+      this.showEditPopup = false;
+    });
   }
   enlargeImg(imgSrc: string) {
     this.enlargeImgSrc = imgSrc;

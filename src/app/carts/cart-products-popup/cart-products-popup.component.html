@@ -1,0 +1,33 @@
+<dx-popup
+  [visible]="true"
+  height="auto"
+  width="70%"
+  [title]="'Cart Products'"
+  (onHiding)="close()"
+>
+  <dx-list [dataSource]="cartData.products" displayExpr="title"></dx-list>
+  <!-- <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'Cancel',
+      onClick: cancel,
+      type: 'default',
+      disabled: false
+    }"
+  >
+  </dxi-toolbar-item>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'Confirm',
+      onClick: confirm,
+      type: 'default',
+      disabled: false
+    }"
+  >
+  </dxi-toolbar-item> -->
+</dx-popup>

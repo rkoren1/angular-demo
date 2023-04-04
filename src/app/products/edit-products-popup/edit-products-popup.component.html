@@ -1,17 +1,28 @@
 <dx-popup
   [visible]="true"
-  height="95%"
-  width="95%"
+  height="auto"
+  width="70%"
   [title]="'Editing ' + productData.title"
   (onHiding)="close()"
 >
   <dx-form [(formData)]="productData">
-    <dxi-item dataField="title"></dxi-item>
-    <dxi-item dataField="description"></dxi-item>
-    <dxi-item dataField="price"></dxi-item>
-    <dxi-item dataField="discountPercentage"></dxi-item>
-    <dxi-item dataField="stock"></dxi-item>
-    <dxi-item dataField="brand"></dxi-item>
+    <dxi-item itemType="group" [colCount]="6">
+      <dxi-item dataField="title" [colSpan]="3" type="required"></dxi-item>
+      <dxi-item dataField="category" [colSpan]="3" type="required"></dxi-item>
+      <dxi-item dataField="price" [colSpan]="3" type="required"></dxi-item>
+      <dxi-item dataField="discountPercentage" [colSpan]="3"
+        ><dxo-label text="Discount %"></dxo-label
+      ></dxi-item>
+      <dxi-item dataField="stock" [colSpan]="3" type="required"></dxi-item>
+      <dxi-item dataField="brand" [colSpan]="3"></dxi-item>
+      <dxi-item
+        editorType="dxTextArea"
+        dataField="description"
+        [colSpan]="6"
+        type="required"
+        [editorOptions]="{ height: 90, maxLength: 300 }"
+      ></dxi-item>
+    </dxi-item>
   </dx-form>
 
   <dxi-toolbar-item

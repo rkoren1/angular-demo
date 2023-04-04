@@ -3,7 +3,7 @@
     <div
       class="cart-wrapper card"
       *ngFor="let cart of cartsData"
-      (click)="cartClicked(cart.userId)"
+      (click)="cartClicked(cart.id)"
     >
       <div class="fa-solid fa-cart-shopping cart"></div>
       <div>
@@ -14,3 +14,10 @@
     </div>
   </div>
 </div>
+<app-cart-products-popup
+  *ngIf="showPopup"
+  [cartId]="popupCartId"
+  (closed)="closePopup()"
+  (confirmed)="closePopup()"
+  (canceled)="popupConfirmed()"
+></app-cart-products-popup>
