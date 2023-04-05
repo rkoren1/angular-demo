@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GetProducts, Product } from 'app/shared/interfaces/product.model';
 import { map } from 'rxjs';
@@ -35,5 +35,11 @@ export class ProductsService {
       'https://dummyjson.com/users/' + productId,
       JSON.stringify(productData)
     );
+  }
+  searchProducts(productName: string) {
+    const params = new HttpParams().set('q', productName);
+    return this.http
+      .get<GetProducts>('https://dummyjson.com/products', { params })
+      .pipe(map((res) => res.products));
   }
 }

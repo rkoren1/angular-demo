@@ -1,8 +1,20 @@
 <div class="main-content">
+  <div class="search-box-wrapper">
+    <dx-number-box
+      #searchBox
+      width="25%"
+      id="text-input"
+      class="search-box"
+      placeholder="Search by user ID.."
+      [value]="null"
+      valueChangeEvent="keyup"
+      (onValueChanged)="onChange$.next($event)"
+    ></dx-number-box>
+  </div>
   <div class="carts-wrapper">
     <div
       class="cart-wrapper card"
-      *ngFor="let cart of cartsData"
+      *ngFor="let cart of filteredCarts"
       (click)="cartClicked(cart.id)"
     >
       <div class="fa-solid fa-cart-shopping cart"></div>

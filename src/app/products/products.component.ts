@@ -22,14 +22,18 @@ export class ProductsComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.onChange$.pipe(debounceTime(300)).subscribe((res) => {
+    this.onChange$.pipe(debounceTime(500)).subscribe((res) => {
       this.startSearching(res.value);
     });
-    this.startSearching = this.startSearching.bind(this);
+    this.bindings();
     this.productsService.getProducts().subscribe((productsData) => {
       this.products = productsData;
       this.filteredProducts = productsData;
     });
+  }
+
+  bindings() {
+    this.startSearching = this.startSearching.bind(this);
   }
 
   deleteProduct(productId: number, productName: string) {
@@ -52,9 +56,9 @@ export class ProductsComponent implements OnInit {
     });
   }
   startSearching(e: string) {
-    this.filteredProducts = this.products.filter((value) =>
-      value.title.toLowerCase().includes(e.toLowerCase())
-    );
+    this.productsService.searchProducts(e).subscribe((searchResults) => {
+      this.filteredProducts = searchResults;
+    });
   }
 
   closeEditPopup() {

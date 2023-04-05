@@ -15,6 +15,7 @@ import {
   DxButtonModule,
   DxFormModule,
   DxListModule,
+  DxNumberBoxModule,
   DxPopupModule,
   DxTextAreaModule,
   DxTextBoxModule,
@@ -44,6 +45,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
     DxButtonModule,
     DxTextAreaModule,
     DxListModule,
+    DxNumberBoxModule,
   ],
   declarations: [
     UsersComponent,
