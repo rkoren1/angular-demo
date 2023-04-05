@@ -1,5 +1,11 @@
 # Demo Project
 
+## Google login:
+
+• <b>Loging in only works on localhost:4200</b><br />
+• Currently only login works<br />
+• To log in you need to click user icon<br />
+
 ## Creating docker image
 
 To create docker image run the next command in the root of application:<b> docker build -t demo-project . </b>(including the dot)!
